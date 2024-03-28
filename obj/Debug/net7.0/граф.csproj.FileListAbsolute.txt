@@ -1,0 +1,14 @@
+C:\yes\граф\bin\Debug\net7.0\граф.exe
+C:\yes\граф\bin\Debug\net7.0\граф.deps.json
+C:\yes\граф\bin\Debug\net7.0\граф.runtimeconfig.json
+C:\yes\граф\bin\Debug\net7.0\граф.dll
+C:\yes\граф\bin\Debug\net7.0\граф.pdb
+C:\yes\граф\obj\Debug\net7.0\граф.GeneratedMSBuildEditorConfig.editorconfig
+C:\yes\граф\obj\Debug\net7.0\граф.AssemblyInfoInputs.cache
+C:\yes\граф\obj\Debug\net7.0\граф.AssemblyInfo.cs
+C:\yes\граф\obj\Debug\net7.0\граф.csproj.CoreCompileInputs.cache
+C:\yes\граф\obj\Debug\net7.0\граф.dll
+C:\yes\граф\obj\Debug\net7.0\refint\граф.dll
+C:\yes\граф\obj\Debug\net7.0\граф.pdb
+C:\yes\граф\obj\Debug\net7.0\граф.genruntimeconfig.cache
+C:\yes\граф\obj\Debug\net7.0\ref\граф.dll
