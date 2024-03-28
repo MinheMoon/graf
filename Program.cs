@@ -75,6 +75,8 @@ class Program
 
         graph.AddEdge(5, 5);
 
+        //щось трошки іде не так ... 5 не виводиться як недосяжна вершина....
+
         var unreachableVertices = graph.GetUnreachableVertices();
         Console.WriteLine("Недосяжні вершини:");
         foreach (var vertex in unreachableVertices)
