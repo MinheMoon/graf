@@ -14,37 +14,33 @@
         adjList[dest].Add(src); 
     }
 
-    public List<int> GetUnreachableVertices()
+ public List<int> GetUnreachableVertices(int startVertex)
+{
+    var visited = new HashSet<int>();
+    var unreachable = new List<int>();
+
+    DFS(startVertex, visited);
+
+    foreach (var vertex in adjList.Keys)
     {
-        var visited = new HashSet<int>();
-        var unreachable = new List<int>();
-
-        foreach (var vertex in adjList.Keys)
+        if (!visited.Contains(vertex))
         {
-            if (!visited.Contains(vertex))
-            {
-                DFS(vertex, visited);
-            }
+            unreachable.Add(vertex);
         }
-
-        foreach (var vertex in adjList.Keys)
-        {
-            if (!visited.Contains(vertex))
-            {
-                unreachable.Add(vertex);
-            }
-        }
-
-        return unreachable;
     }
 
-    public void DisplayReachability()
+    return unreachable;
+}
+
+     public void DisplayReachability(int startVertex)
     {
-        foreach (var vertex in adjList.Keys)
+        var visited = new HashSet<int>();
+        DFS(startVertex, visited);
+        Console.WriteLine($"Вершина {startVertex} може дістатися до {visited.Count - 1} інших вершин");
+        Console.WriteLine("Вершини, до яких можна дістатися:");
+        foreach (var vertex in visited.Where(v => v != startVertex))
         {
-            var visited = new HashSet<int>();
-            DFS(vertex, visited);
-            Console.WriteLine($"Вершина {vertex} може дістатися до {visited.Count - 1} інших вершин");
+            Console.WriteLine(vertex);
         }
     }
 
@@ -60,6 +56,11 @@
             }
         }
     }
+    public IEnumerable<int> GetAllVertices()
+    {
+        return adjList.Keys;
+    }
+
 }
 
 class Program
@@ -72,19 +73,23 @@ class Program
         graph.AddEdge(2, 3);
         graph.AddEdge(2, 4);
         graph.AddEdge(4, 3);
-
         graph.AddEdge(5, 5);
 
-        //щось трошки іде не так ... 5 не виводиться як недосяжна вершина....
-
-        var unreachableVertices = graph.GetUnreachableVertices();
         Console.WriteLine("Недосяжні вершини:");
-        foreach (var vertex in unreachableVertices)
+        foreach (var vertex in graph.GetAllVertices())
         {
-            Console.WriteLine(vertex);
+            var unreachableVertices = graph.GetUnreachableVertices(vertex);
+            Console.WriteLine($"З вершини {vertex}:");
+            foreach (var unreachable in unreachableVertices)
+            {
+                Console.WriteLine(unreachable);
+            }
         }
 
         Console.WriteLine("\nДосяжність вершин:");
-        graph.DisplayReachability();
+        foreach (var vertex in graph.GetAllVertices())
+        {
+            graph.DisplayReachability(vertex);
+        }
     }
 }
